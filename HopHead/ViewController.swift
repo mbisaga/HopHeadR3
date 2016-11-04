@@ -10,6 +10,10 @@ import UIKit
 
 class ViewController: UIViewController,UIPickerViewDataSource, UIPickerViewDelegate{
 
+    //get beerName from tables
+    var SelectedValue:String!
+
+    
     //handle the UIPicker w/ datasource etc. 
     var pickerDataSource = ["Ale", "Lager", "Porter/Stout", "Malt"];
     
@@ -81,6 +85,7 @@ class ViewController: UIViewController,UIPickerViewDataSource, UIPickerViewDeleg
     var abv = 0
     var ibu = 0
     var notes = ""
+    var id = 0
     //favorites 0== false 1==true
     
     
@@ -96,6 +101,7 @@ class ViewController: UIViewController,UIPickerViewDataSource, UIPickerViewDeleg
         }
     }
     
+    @IBOutlet weak var mySwitch: UISwitch!
     
     @IBOutlet weak var pickerView: UIPickerView!
     
@@ -119,6 +125,9 @@ class ViewController: UIViewController,UIPickerViewDataSource, UIPickerViewDeleg
             
             return
         }
+        
+        
+        
         
         //TO DO: check that beerName isnt already in DB
         
@@ -158,20 +167,17 @@ class ViewController: UIViewController,UIPickerViewDataSource, UIPickerViewDeleg
         if sqlite3_open(fileURL.path, &db) != SQLITE_OK {
             print("error opening database")
         }
-        
         //create table if doesnt exist
-        if sqlite3_exec(db, "create table if not exists beers (id integer primary key autoincrement, beerName varchar not null, breweryName varchar, breweryLocation varchar, abv integer, ibu integer, category varchar, style varchar, favorites integer, notes varchar)", nil, nil, nil) != SQLITE_OK {
+        if sqlite3_exec(db, "drop table beers)", nil, nil, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db))
             print("error creating table: \(errmsg)")
         }
+
         
-        
-        //insert statement
-        var statement: OpaquePointer? = nil
-        
-        if sqlite3_prepare_v2(db, "insert into beers (beerName,breweryName,breweryLocation,abv,ibu,category,style,favorites,notes) values (?,?,?,?,?,?,?,?,?)", -1, &statement, nil) != SQLITE_OK {
+        //create table if doesnt exist
+        if sqlite3_exec(db, "create table if not exists beers (id integer primary key autoincrement, beerName varchar not null , breweryName varchar, breweryLocation varchar, abv integer, ibu integer, category varchar, style varchar, favorites integer, notes varchar)", nil, nil, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db))
-            print("error preparing insert: \(errmsg)")
+            print("error creating table: \(errmsg)")
         }
         
         
@@ -179,11 +185,21 @@ class ViewController: UIViewController,UIPickerViewDataSource, UIPickerViewDeleg
         //let SQLITE_STATIC = unsafeBitCast(0, to: sqlite3_destructor_type.self)
         let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
         
+        //insert statement
+        var statement: OpaquePointer? = nil
+
+        
+        if sqlite3_prepare_v2(db, "insert or replace into beers (beerName,breweryName,breweryLocation,abv,ibu,category,style,favorites,notes) values (?,?,?,?,?,?,?,?,?)", -1, &statement, nil) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(db))
+            print("error preparing insert: \(errmsg)")
+        }
         if sqlite3_bind_text(statement, 1, self.name, -1, SQLITE_TRANSIENT) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db))
             print("failure binding beer name: \(errmsg)")
         }
         
+        
+
         if sqlite3_bind_text(statement, 2, self.brewName, -1, SQLITE_TRANSIENT) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db))
             print("failure binding brewName: \(errmsg)")
@@ -242,38 +258,48 @@ class ViewController: UIViewController,UIPickerViewDataSource, UIPickerViewDeleg
         
         
         
-        //TESTING ONLY REMOVE IF WORKS
-        ///////////////////////////////////////
-        ///////////////////////////////////////
         
-        
-        if sqlite3_prepare_v2(db, "select id, beerName from beers", -1, &statement, nil) != SQLITE_OK {
+        if sqlite3_prepare_v2(db, "delete from beers where beerName=? and id <= ?", -1, &statement, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db))
             print("error preparing select: \(errmsg)")
         }
         
-        while sqlite3_step(statement) == SQLITE_ROW {
-            let id = sqlite3_column_int64(statement, 0)
-            print("id = \(id); ", terminator: "")
-            
-            if let name = sqlite3_column_text(statement, 1) {
-                let nameString = String(cString: name)
-                print("beer name = \(nameString)")
-            } else {
-                print("name not found")
-            }
+        if sqlite3_bind_text(statement, 1, SelectedValue, -1, SQLITE_TRANSIENT) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(db))
+            print("failure binding beerName: \(errmsg)")
         }
         
+        if sqlite3_bind_int(statement, 2, Int32(id)) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(db))
+            print("failure binding beerName: \(errmsg)")
+        }
+        
+        //one step
+        if sqlite3_step(statement) != SQLITE_DONE {
+            let errmsg = String(cString: sqlite3_errmsg(db))
+            print("failure deleting duplicate beer: \(errmsg)")
+        }
+        
+        
+        //finalize & reset statement
         if sqlite3_finalize(statement) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db))
             print("error finalizing prepared statement: \(errmsg)")
         }
         
         statement = nil
+
         
-        ///ABOVE IS TESTING
-        ///////////////////////////////////////////////
-        ///////////////////////////////////////////////
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         //close db & set to nil
         if sqlite3_close(db) != SQLITE_OK {
@@ -281,6 +307,15 @@ class ViewController: UIViewController,UIPickerViewDataSource, UIPickerViewDeleg
         }
         
         db = nil
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
        
@@ -302,9 +337,155 @@ class ViewController: UIViewController,UIPickerViewDataSource, UIPickerViewDeleg
         super.viewDidLoad()
         
         //set up picker delegate and datasource
+      
         
         self.pickerView.dataSource = self;
         self.pickerView.delegate = self;
+        
+        if SelectedValue != nil {
+        
+        print(SelectedValue)
+
+        //open Database
+        let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            .appendingPathComponent("hophead.db")
+        
+        
+        
+        var db: OpaquePointer? = nil
+        if sqlite3_open(fileURL.path, &db) != SQLITE_OK {
+            print("error opening database")
+        }
+        
+        //in case no beer or table has been added, create table here
+        if sqlite3_exec(db, "create table if not exists beers (id integer primary key autoincrement, beerName varchar not null, breweryName varchar, breweryLocation varchar, abv integer, ibu integer, category varchar, style varchar, favorites integer, notes varchar)", nil, nil, nil) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(db))
+            print("error creating table: \(errmsg)")
+        }
+        
+        
+        
+        //query database
+        let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
+        var statement: OpaquePointer? = nil
+        
+        if sqlite3_prepare_v2(db, "select * from beers where beerName = (?)", -1, &statement, nil) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(db))
+            print("error preparing select: \(errmsg)")
+        }
+        
+        if sqlite3_bind_text(statement, 1, SelectedValue, -1, SQLITE_TRANSIENT) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(db))
+            print("failure binding beerName: \(errmsg)")
+        }
+        
+        while sqlite3_step(statement) == SQLITE_ROW {
+             id = Int(sqlite3_column_int64(statement, 0))
+            print("id = \(id); ", terminator: "")
+            
+           beerName_txt.text = SelectedValue
+            
+            let breweryD = sqlite3_column_text(statement,2) ;
+            if breweryD != nil { brewName_txt.text = String(cString: breweryD!) }
+            
+            let locD = sqlite3_column_text(statement,3) ;
+            if locD != nil { brewLoc_txt.text = String(cString: locD!) }
+
+            
+            let abv =  sqlite3_column_int(statement, 4);
+            //let abvInt = Int8(CInt: abv)
+            if abv != 0 { abv_txt.text = String(abv) }
+            
+            let ibu = sqlite3_column_int(statement, 5) ;
+            if ibu != 0 { ibu_txt.text = String(ibu) }
+            
+            
+            let fav = sqlite3_column_int(statement,8) ;
+            if Int(fav) == 1{
+                mySwitch.setOn(true, animated:true)
+            }
+            else{
+                mySwitch.setOn(false, animated:true)
+            }
+            
+            
+            let notesD = sqlite3_column_text(statement,9) ;
+            if notesD != nil { notes_txt.text = String(cString: notesD!)}
+            
+            
+            let styleD = sqlite3_column_text(statement,7) ;
+            if styleD != nil { beerStyle_txt.text = String(cString: styleD!) }
+            
+            let catD = sqlite3_column_text(statement,6) ;
+            let categoryD = String(cString: catD!) 
+           
+            if categoryD == "Ales"{
+                self.catView.backgroundColor = alesColor;
+                self.catLabel.text = "Ale"
+                category = "Ales"
+                pickerView.selectRow(0, inComponent: 0, animated: true)
+                
+            }
+            
+            
+            else if(categoryD == "Lagers")
+            {
+                self.catView.backgroundColor = lagersColor;
+                self.catLabel.text = "Lager"
+                category = "Lagers"
+                pickerView.selectRow(1, inComponent: 0, animated: true)
+            }
+            else if(categoryD == "PorterStouts")
+            {
+                self.catView.backgroundColor =  portersStoutsColor;
+                self.catLabel.text = "Porter/Stout"
+                category = "PorterStouts"
+                pickerView.selectRow(2, inComponent: 0, animated: true)
+            }
+            else
+            {
+                self.catView.backgroundColor = maltsColor;
+                self.catLabel.text = "Malt"
+                category = "Malts"
+                pickerView.selectRow(3, inComponent: 0, animated: true)
+            }
+
+            
+            
+            
+            
+            
+            
+   
+        }
+        
+        if sqlite3_finalize(statement) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(db))
+            print("error finalizing prepared statement: \(errmsg)")
+        }
+        
+        statement = nil
+            
+           
+            
+        
+        
+        
+        //close db & set to nil
+        //if sqlite3_close(db) != SQLITE_OK {
+        //  print("error closing database")
+        //}
+        
+        // db = nil
+
+        
+        
+        }//end if SelectedValue !=nil
+        
+        
+        
+        
+        
     }
     
     
@@ -340,7 +521,6 @@ class ViewController: UIViewController,UIPickerViewDataSource, UIPickerViewDeleg
     let allBeersAccent1Color = UIColor(red: 158, green: 53, blue: 25)
     let allBeersAccent2Color = UIColor(red: 114, green: 34, blue: 13)
     let allBeersAccent4Color = UIColor(red: 66, green: 16, blue: 3)
-    
     
     
     

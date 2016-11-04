@@ -312,14 +312,23 @@ class LagersTableTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // MARK: - Navigation
-
+   
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "lagersEdit"{
+            
+            
+            let destination = segue.destination as? ViewController
+            let cell = sender as! UITableViewCell
+            let selectedRow = tableView.indexPath(for: cell)!.row
+            
+            destination?.SelectedValue = beerNames[selectedRow]
+        }
+
     }
-    */
+  
 
 }

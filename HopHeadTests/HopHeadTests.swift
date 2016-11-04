@@ -1,8 +1,8 @@
 //
 //  HopHeadTests.swift
-//  HopHeadTests
+//  HopHead
 //
-//  Created by Sophie Gairo on 9/14/16.
+//  Created by Sophie Gairo on 11/3/16.
 //  Copyright © 2016 Sophie Gairo. All rights reserved.
 //
 

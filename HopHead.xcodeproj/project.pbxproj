@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		773C76881DCC2D7F00DDCA9F /* HopHeadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773C76871DCC2D7F00DDCA9F /* HopHeadTests.swift */; };
+		773C768A1DCC2DD800DDCA9F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 773C76891DCC2DD800DDCA9F /* Info.plist */; };
+		773C768E1DCC2E0C00DDCA9F /* HopHeadUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773C768C1DCC2E0C00DDCA9F /* HopHeadUITests.swift */; };
+		773C768F1DCC2E0C00DDCA9F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 773C768D1DCC2E0C00DDCA9F /* Info.plist */; };
 		773F61D91DAB3BE9000577D3 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 773F61D81DAB3BE9000577D3 /* libsqlite3.0.tbd */; };
 		773F61DB1DABF3D9000577D3 /* hophead.db in Resources */ = {isa = PBXBuildFile; fileRef = 773F61DA1DABF3D9000577D3 /* hophead.db */; };
 		773F61DD1DABFAD2000577D3 /* hophead.sql in Resources */ = {isa = PBXBuildFile; fileRef = 773F61DC1DABFAD2000577D3 /* hophead.sql */; };
@@ -46,6 +50,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		773C76871DCC2D7F00DDCA9F /* HopHeadTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HopHeadTests.swift; path = HopHeadTests/HopHeadTests.swift; sourceTree = "<group>"; };
+		773C76891DCC2DD800DDCA9F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = HopHeadTests/Info.plist; sourceTree = "<group>"; };
+		773C768C1DCC2E0C00DDCA9F /* HopHeadUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HopHeadUITests.swift; path = HopHeadUITests/HopHeadUITests.swift; sourceTree = "<group>"; };
+		773C768D1DCC2E0C00DDCA9F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = HopHeadUITests/Info.plist; sourceTree = "<group>"; };
 		773F61D31DAB3AFB000577D3 /* HopHead-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HopHead-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		773F61D81DAB3BE9000577D3 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		773F61DA1DABF3D9000577D3 /* hophead.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = hophead.db; sourceTree = "<group>"; };
@@ -98,6 +106,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		773C76861DCC2D4800DDCA9F /* HopHeadTests */ = {
+			isa = PBXGroup;
+			children = (
+				773C76891DCC2DD800DDCA9F /* Info.plist */,
+				773C76871DCC2D7F00DDCA9F /* HopHeadTests.swift */,
+			);
+			name = HopHeadTests;
+			sourceTree = "<group>";
+		};
+		773C768B1DCC2DE800DDCA9F /* HopHeadUITests */ = {
+			isa = PBXGroup;
+			children = (
+				773C768C1DCC2E0C00DDCA9F /* HopHeadUITests.swift */,
+				773C768D1DCC2E0C00DDCA9F /* Info.plist */,
+			);
+			name = HopHeadUITests;
+			sourceTree = "<group>";
+		};
 		773F61D71DAB3BE9000577D3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +135,8 @@
 		77EC541D1D89D94B00B2E8CC = {
 			isa = PBXGroup;
 			children = (
+				773C768B1DCC2DE800DDCA9F /* HopHeadUITests */,
+				773C76861DCC2D4800DDCA9F /* HopHeadTests */,
 				77EC54281D89D94B00B2E8CC /* HopHead */,
 				77EC54271D89D94B00B2E8CC /* Products */,
 				773F61D71DAB3BE9000577D3 /* Frameworks */,
@@ -264,9 +292,11 @@
 			files = (
 				77EC54371D89D94C00B2E8CC /* LaunchScreen.storyboard in Resources */,
 				773F61DD1DABFAD2000577D3 /* hophead.sql in Resources */,
+				773C768A1DCC2DD800DDCA9F /* Info.plist in Resources */,
 				77EC54341D89D94C00B2E8CC /* Assets.xcassets in Resources */,
 				77EC542F1D89D94C00B2E8CC /* Main.storyboard in Resources */,
 				773F61DB1DABF3D9000577D3 /* hophead.db in Resources */,
+				773C768F1DCC2E0C00DDCA9F /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +324,7 @@
 				8A2F8F371DAE8D580003E34B /* PortersStoutsTableTableViewController.swift in Sources */,
 				77EC542C1D89D94B00B2E8CC /* ViewController.swift in Sources */,
 				773F61DF1DAC009C000577D3 /* ColorExtensions.swift in Sources */,
+				773C76881DCC2D7F00DDCA9F /* HopHeadTests.swift in Sources */,
 				8A2F8F391DAE8D890003E34B /* PortersStoutsTableViewCell.swift in Sources */,
 				77EC542A1D89D94B00B2E8CC /* AppDelegate.swift in Sources */,
 				77EC54321D89D94C00B2E8CC /* HopHead.xcdatamodeld in Sources */,
@@ -301,6 +332,7 @@
 				8A2F8F3D1DAE91990003E34B /* MaltsTableViewCell.swift in Sources */,
 				77771A4C1DADF0000029D469 /* AleTableViewCell.swift in Sources */,
 				8A2F8F351DAE7A800003E34B /* lagerTableViewCell.swift in Sources */,
+				773C768E1DCC2E0C00DDCA9F /* HopHeadUITests.swift in Sources */,
 				8A77B0AE1D95797900C96D69 /* CosmosDistrib.swift in Sources */,
 				8A2F8F3B1DAE91860003E34B /* MaltsTableTableViewController.swift in Sources */,
 				773F61E31DAD445E000577D3 /* AlesTableTableViewController.swift in Sources */,

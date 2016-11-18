@@ -233,7 +233,7 @@ class ViewController: UIViewController,UIPickerViewDataSource, UIPickerViewDeleg
             print("failure binding favorites: \(errmsg)")
         }
         
-        if sqlite3_bind_text(statement, 7, self.notes, -1, SQLITE_TRANSIENT) != SQLITE_OK {
+        if sqlite3_bind_text(statement, 9, self.notes, -1, SQLITE_TRANSIENT) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db))
             print("failure binding notes: \(errmsg)")
         }

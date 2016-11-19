@@ -342,6 +342,7 @@ class ViewController: UIViewController,UIPickerViewDataSource, UIPickerViewDeleg
         self.pickerView.dataSource = self;
         self.pickerView.delegate = self;
         
+        //present beer to user
         if SelectedValue != nil {
         
         print(SelectedValue)

@@ -23,6 +23,7 @@
 		77EC54321D89D94C00B2E8CC /* HopHead.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 77EC54301D89D94C00B2E8CC /* HopHead.xcdatamodeld */; };
 		77EC54341D89D94C00B2E8CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77EC54331D89D94C00B2E8CC /* Assets.xcassets */; };
 		77EC54371D89D94C00B2E8CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77EC54351D89D94C00B2E8CC /* LaunchScreen.storyboard */; };
+		8A12A4651DDF82BA0095AB24 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A12A4641DDF82BA0095AB24 /* SearchTableViewCell.swift */; };
 		8A2F8F331DAE77D40003E34B /* LagersTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F8F321DAE77D40003E34B /* LagersTableTableViewController.swift */; };
 		8A2F8F351DAE7A800003E34B /* lagerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F8F341DAE7A800003E34B /* lagerTableViewCell.swift */; };
 		8A2F8F371DAE8D580003E34B /* PortersStoutsTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F8F361DAE8D580003E34B /* PortersStoutsTableTableViewController.swift */; };
@@ -30,6 +31,8 @@
 		8A2F8F3B1DAE91860003E34B /* MaltsTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F8F3A1DAE91860003E34B /* MaltsTableTableViewController.swift */; };
 		8A2F8F3D1DAE91990003E34B /* MaltsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F8F3C1DAE91990003E34B /* MaltsTableViewCell.swift */; };
 		8A77B0AE1D95797900C96D69 /* CosmosDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A77B0AD1D95797900C96D69 /* CosmosDistrib.swift */; };
+		8A9FFBF01DDF708F0061A4A4 /* Beer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9FFBEF1DDF708F0061A4A4 /* Beer.swift */; };
+		8A9FFBF21DDF70AB0061A4A4 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9FFBF11DDF70AB0061A4A4 /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +74,7 @@
 		77EC54381D89D94C00B2E8CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		77EC543D1D89D94C00B2E8CC /* HopHeadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HopHeadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		77EC54481D89D94C00B2E8CC /* HopHeadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HopHeadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A12A4641DDF82BA0095AB24 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		8A2F8F321DAE77D40003E34B /* LagersTableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LagersTableTableViewController.swift; sourceTree = "<group>"; };
 		8A2F8F341DAE7A800003E34B /* lagerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = lagerTableViewCell.swift; sourceTree = "<group>"; };
 		8A2F8F361DAE8D580003E34B /* PortersStoutsTableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortersStoutsTableTableViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +82,8 @@
 		8A2F8F3A1DAE91860003E34B /* MaltsTableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaltsTableTableViewController.swift; sourceTree = "<group>"; };
 		8A2F8F3C1DAE91990003E34B /* MaltsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaltsTableViewCell.swift; sourceTree = "<group>"; };
 		8A77B0AD1D95797900C96D69 /* CosmosDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CosmosDistrib.swift; sourceTree = "<group>"; };
+		8A9FFBEF1DDF708F0061A4A4 /* Beer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Beer.swift; path = ../../../Desktop/Beer.swift; sourceTree = "<group>"; };
+		8A9FFBF11DDF70AB0061A4A4 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchViewController.swift; path = ../../../Desktop/SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +148,8 @@
 				773F61DC1DABFAD2000577D3 /* hophead.sql */,
 				77EC542B1D89D94B00B2E8CC /* ViewController.swift */,
 				773F61DE1DAC009C000577D3 /* ColorExtensions.swift */,
+				8A9FFBF11DDF70AB0061A4A4 /* SearchViewController.swift */,
+				8A9FFBEF1DDF708F0061A4A4 /* Beer.swift */,
 				773F61E21DAD445E000577D3 /* AlesTableTableViewController.swift */,
 				8A2F8F3A1DAE91860003E34B /* MaltsTableTableViewController.swift */,
 				8A2F8F361DAE8D580003E34B /* PortersStoutsTableTableViewController.swift */,
@@ -160,6 +168,7 @@
 				77234D1D1DCCCCA300184C8B /* FavTableTableViewController.swift */,
 				771DCF991DCCE2AB00685E16 /* AllBeersTableTableViewController.swift */,
 				771DCF9B1DCCE2CC00685E16 /* AllBeersTableViewCell.swift */,
+				8A12A4641DDF82BA0095AB24 /* SearchTableViewCell.swift */,
 			);
 			path = HopHead;
 			sourceTree = "<group>";
@@ -305,12 +314,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A2F8F371DAE8D580003E34B /* PortersStoutsTableTableViewController.swift in Sources */,
+				8A9FFBF01DDF708F0061A4A4 /* Beer.swift in Sources */,
 				77EC542C1D89D94B00B2E8CC /* ViewController.swift in Sources */,
 				773F61DF1DAC009C000577D3 /* ColorExtensions.swift in Sources */,
+				8A9FFBF21DDF70AB0061A4A4 /* SearchViewController.swift in Sources */,
 				771DCF9C1DCCE2CC00685E16 /* AllBeersTableViewCell.swift in Sources */,
 				8A2F8F391DAE8D890003E34B /* PortersStoutsTableViewCell.swift in Sources */,
 				77EC542A1D89D94B00B2E8CC /* AppDelegate.swift in Sources */,
 				77EC54321D89D94C00B2E8CC /* HopHead.xcdatamodeld in Sources */,
+				8A12A4651DDF82BA0095AB24 /* SearchTableViewCell.swift in Sources */,
 				8A2F8F331DAE77D40003E34B /* LagersTableTableViewController.swift in Sources */,
 				77234D1E1DCCCCA300184C8B /* FavTableTableViewController.swift in Sources */,
 				8A2F8F3D1DAE91990003E34B /* MaltsTableViewCell.swift in Sources */,
@@ -472,7 +484,7 @@
 				DEVELOPMENT_TEAM = 9D8X8T64HF;
 				INFOPLIST_FILE = HopHead/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.HopHead;
+				PRODUCT_BUNDLE_IDENTIFIER = com.HopHea;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "HopHead-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -490,7 +502,7 @@
 				DEVELOPMENT_TEAM = 9D8X8T64HF;
 				INFOPLIST_FILE = HopHead/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.HopHead;
+				PRODUCT_BUNDLE_IDENTIFIER = com.HopHea;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "HopHead-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
